@@ -1,5 +1,6 @@
 import { Card, Title, AreaChart } from '@tremor/react';
 import { useEffect, useState } from 'react';
+import IcnPlay from '../../../assets/icons/Play';
 
 const chartdata = [
   {
@@ -37,12 +38,19 @@ const PrmAgua = () => {
 
   return (
     <Card className="">
-      <Title>Newsletter revenue over time (USD)</Title>
+      <Title className="flex justify-between border-b-2 border-slate-200 py-4">
+        <span>Promedio de aguas tanques</span>{' '}
+        <span className="flex items-center space-x-1">
+          <span className="text-slate-400">Filtro:</span>
+          <span className="text-teal-500">Esta Semana</span>
+          <IcnPlay classCustom={'w-3 rotate-90 text-slate-400'} />
+        </span>
+      </Title>
       <AreaChart
         className=""
         data={data}
         index="date"
-        categories={['The Pragmatic Engineer']}
+        categories={['Nivel del agua']}
         colors={['cyan']}
         valueFormatter={dataFormatter}
         curveType="natural"

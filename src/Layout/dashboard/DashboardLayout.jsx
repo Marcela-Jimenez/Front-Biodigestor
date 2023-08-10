@@ -164,7 +164,7 @@ const DashboardLayout = () => {
                   onChange={(e) => setToggler(e.target.checked)}
                   className="hidden"
                 />
-                <label htmlFor="toggleAside">
+                <label htmlFor="toggleAside" className="cursor-pointer">
                   <img
                     src={toggle_icon}
                     alt="icono de barra lateral"
@@ -181,7 +181,7 @@ const DashboardLayout = () => {
       <main className="w-full h-screen overflow-auto">
         <header className="flex bg-white">
           <div className="relative w-full mx-3 items-center justify-center h-14">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none ">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
