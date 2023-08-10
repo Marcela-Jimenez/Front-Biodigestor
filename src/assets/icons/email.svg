@@ -1,0 +1,11 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon/menu/email" clip-path="url(#clip0_437_212)">
+<path id="Vector" d="M2.37508 5.0005V4.99992C2.37508 4.46528 2.80791 4.03325 3.33341 4.03325H16.6667C17.1968 4.03325 17.6334 4.46985 17.6334 4.99992V14.9999C17.6334 15.53 17.1968 15.9666 16.6667 15.9666H3.33341C2.80343 15.9666 2.36689 15.5301 2.36675 15.0002C2.36675 15.0001 2.36675 15 2.36675 14.9999L2.37508 5.0005Z" stroke="#C2CFE0" stroke-width="1.4"/>
+<path id="Vector 2" d="M2.5 5L10 10L17.5 5" stroke="#C2CFE0" stroke-width="1.4"/>
+</g>
+<defs>
+<clipPath id="clip0_437_212">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>

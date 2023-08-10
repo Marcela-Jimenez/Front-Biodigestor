@@ -1,0 +1,12 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon/menu/deals" clip-path="url(#clip0_437_192)">
+<path id="Vector" d="M2.50008 4.03325H17.5001C17.5718 4.03325 17.6334 4.09485 17.6334 4.16659V15.8333C17.6334 15.905 17.5718 15.9666 17.5001 15.9666H2.50008C2.42835 15.9666 2.36675 15.905 2.36675 15.8333V4.16659C2.36675 4.09485 2.42835 4.03325 2.50008 4.03325Z" stroke="#C2CFE0" stroke-width="1.4"/>
+<rect id="Rectangle" x="6.5" y="3.33325" width="1.16667" height="13.3333" fill="#C2CFE0"/>
+<rect id="Rectangle_2" x="12.3333" y="3.33325" width="1.16667" height="13.3333" fill="#C2CFE0"/>
+</g>
+<defs>
+<clipPath id="clip0_437_192">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>
