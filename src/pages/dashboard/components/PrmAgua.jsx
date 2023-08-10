@@ -5,27 +5,27 @@ import IcnPlay from '../../../assets/icons/Play';
 const chartdata = [
   {
     date: 'Jan 22',
-    'The Pragmatic Engineer': 2338,
+    'Nivel del agua': 2338,
   },
   {
     date: 'Feb 22',
-    'The Pragmatic Engineer': 2103,
+    'Nivel del agua': 2103,
   },
   {
     date: 'Mar 22',
-    'The Pragmatic Engineer': 2194,
+    'Nivel del agua': 2194,
   },
   {
     date: 'Apr 22',
-    'The Pragmatic Engineer': 2108,
+    'Nivel del agua': 2108,
   },
   {
     date: 'May 22',
-    'The Pragmatic Engineer': 1812,
+    'Nivel del agua': 1812,
   },
   {
     date: 'Jun 22',
-    'The Pragmatic Engineer': 1726,
+    'Nivel del agua': 1726,
   },
 ];
 
