@@ -1,4 +1,3 @@
-import { Card } from '@tremor/react';
 import CalendarioFiltro from './CalendarioFiltro';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
@@ -37,7 +36,7 @@ const actividades = [
 
 const PnlActividades = () => {
   return (
-    <Card className="h-full space-y-4">
+    <div className="h-full space-y-4">
       <div className="space-y-3">
         <div className="flex justify-between text-sm">
           <p className="text-slate-700">8 Tareas completadas de 10</p>
@@ -66,7 +65,7 @@ const PnlActividades = () => {
           </div>
         ))}
       </div>
-    </Card>
+    </div>
   );
 };
 export default PnlActividades;

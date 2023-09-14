@@ -27,7 +27,7 @@ export default {
             muted: '#f9fafb', // gray-50
             subtle: '#f3f4f6', // gray-100
             DEFAULT: '#ffffff', // white
-            emphasis: '#374151', // gray-700
+            emphasis: '#f59e0b', // amber-500
           },
           border: {
             DEFAULT: '#e5e7eb', // gray-200

@@ -42,9 +42,7 @@ const DashboardLayout = () => {
           />
           <span className={`${toggler ? '' : 'hidden'} w-10/12`}>
             <p className="text-xl">Diana Blanco</p>
-            <p className="truncate">
-              dmarcelablanco@ucundinamarca.edu.cooooooooooooooooooooooo
-            </p>
+            <p className="truncate">dmarcelablanco@ucundinamarca.edu.co</p>
           </span>
         </div>
 
@@ -64,33 +62,19 @@ const DashboardLayout = () => {
             <li>
               <Link
                 className={`flex items-center space-x-2 hover:text-white transition-colors ${
-                  pathname === '/tareas' ? 'text-white' : ''
+                  pathname === '/actividades' ? 'text-white' : ''
                 }`}
-                to={`/tareas`}
+                to={`/actividades`}
               >
                 <img
                   src={tasks_icon}
-                  alt="icono de tareas"
+                  alt="icono de actividades"
                   className="w-10 p-1"
                 />
-                <span className={toggler ? '' : 'hidden'}>Tareas</span>
+                <span className={toggler ? '' : 'hidden'}>Actividades</span>
               </Link>
             </li>
-            <li>
-              <Link
-                className={`flex items-center space-x-2 hover:text-white transition-colors ${
-                  pathname === '/correo' ? 'text-white' : ''
-                }`}
-                to={`/correo`}
-              >
-                <img
-                  src={email_icon}
-                  alt="icono de correo"
-                  className="w-10 p-1"
-                />
-                <span className={toggler ? '' : 'hidden'}>Correo</span>
-              </Link>
-            </li>
+
             <li>
               <Link
                 className={`flex items-center space-x-2 hover:text-white transition-colors ${
@@ -121,21 +105,7 @@ const DashboardLayout = () => {
                 <span className={toggler ? '' : 'hidden'}>Solicitudes</span>
               </Link>
             </li>
-            <li>
-              <Link
-                className={`flex items-center space-x-2 hover:text-white transition-colors ${
-                  pathname === '/upas' ? 'text-white' : ''
-                }`}
-                to={`/upas`}
-              >
-                <img
-                  src={deals_icon}
-                  alt="icono de upas"
-                  className="w-10 p-1"
-                />
-                <span className={toggler ? '' : 'hidden'}>Upas</span>
-              </Link>
-            </li>
+
             <li className="border-t mt-2">
               <Link
                 className={`flex items-center space-x-2 hover:text-white transition-colors ${
