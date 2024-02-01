@@ -4,6 +4,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Usuarios from './pages/usuarios/Usuarios';
 import Login from './pages/login/Login';
 import Actividades from './pages/actividades/Actividades';
+import Providers from './providers/providers';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Providers>
+      <RouterProvider router={router} />
+    </Providers>
+  );
 };
 export default App;

@@ -1,26 +1,6 @@
-import IcnPlay from '../../../assets/icons/Play';
-
 import { Title, Card, LineChart } from '@tremor/react';
 
-const chartdata = [
-  {
-    Gas: 0,
-  },
-  {
-    Gas: 20,
-  },
-  {
-    Gas: 40,
-  },
-  {
-    Gas: 60,
-  },
-  {
-    Gas: 100,
-  },
-];
-
-const PrmGas = () => {
+const PrmGas = ({ biodigesterReadList }) => {
   return (
     <Card className="">
       <Title className="flex justify-between border-b-2 border-slate-200 py-4">
@@ -29,8 +9,8 @@ const PrmGas = () => {
       <LineChart
         className="mt-6"
         curveType="natural"
-        data={chartdata}
-        categories={['Gas']}
+        data={biodigesterReadList}
+        categories={['phBiol']}
         colors={['teal']}
         yAxisWidth={40}
       />
