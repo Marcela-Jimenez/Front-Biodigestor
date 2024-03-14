@@ -7,14 +7,29 @@ import { Button, Card, Text, Title } from '@tremor/react';
 import BadgeCustom from './components/BadgeCustom';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+//import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 import { SignalRContext } from '../../providers/providers';
 
 const Dashboard = () => {
   const [biodigesterRead, setBiodigesterRead] = useState();
   const [biodigesterReadList, setBiodigesterReadList] = useState([]);
+  /* useEffect(() => {
+    const getSocket = async () => {
+      const connection = new HubConnectionBuilder()
+        .withUrl('http://localhost:5240/api/hubReadBiodigester')
+        .configureLogging(LogLevel.Information)
+        .build();
 
+      connection.on('getReads', () => {
+        console.log('ok');
+      });
+      await connection.start();
+    };
+    getSocket();
+  }, []); */
   SignalRContext.useSignalREffect('getReads', (result) => {
+    console.log(result);
     setBiodigesterRead(result);
     const limitReads = 15;
     if (biodigesterReadList.length >= limitReads) {
