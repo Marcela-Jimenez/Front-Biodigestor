@@ -10,10 +10,8 @@ import imgProfile from '../../assets/img/avatar.webp';
 //*Iconos
 import DashboardIcon from '../../assets/icons/dashboard.jsx';
 import tasks_icon from '../../assets/icons/tasks.svg';
-import email_icon from '../../assets/icons/email.svg';
 import contacts_icon from '../../assets/icons/contacts.svg';
 import chat_icon from '../../assets/icons/chat.svg';
-import deals_icon from '../../assets/icons/deals.svg';
 import settings_icon from '../../assets/icons/settings.svg';
 import toggle_icon from '../../assets/icons/toggle.svg';
 import icnBell from '../../assets/icons/bell.svg';
@@ -59,7 +57,7 @@ const DashboardLayout = () => {
                 <span className={toggler ? '' : 'hidden'}>Dashboard</span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 className={`flex items-center space-x-2 hover:text-white transition-colors ${
                   pathname === '/actividades' ? 'text-white' : ''
@@ -73,9 +71,9 @@ const DashboardLayout = () => {
                 />
                 <span className={toggler ? '' : 'hidden'}>Actividades</span>
               </Link>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               <Link
                 className={`flex items-center space-x-2 hover:text-white transition-colors ${
                   pathname === '/usuarios' ? 'text-white' : ''
@@ -89,8 +87,8 @@ const DashboardLayout = () => {
                 />
                 <span className={toggler ? '' : 'hidden'}>Usuarios</span>
               </Link>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <Link
                 className={`flex items-center space-x-2 hover:text-white transition-colors ${
                   pathname === '/solicitudes' ? 'text-white' : ''
@@ -104,9 +102,9 @@ const DashboardLayout = () => {
                 />
                 <span className={toggler ? '' : 'hidden'}>Solicitudes</span>
               </Link>
-            </li>
+            </li> */}
 
-            <li className="border-t mt-2">
+            {/* <li className="border-t mt-2">
               <Link
                 className={`flex items-center space-x-2 hover:text-white transition-colors ${
                   pathname === '/configuraciones' ? 'text-white' : ''
@@ -120,7 +118,7 @@ const DashboardLayout = () => {
                 />
                 <span className={toggler ? '' : 'hidden'}>Configuraciones</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
 
           <ul className="flex justify-end">

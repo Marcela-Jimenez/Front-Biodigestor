@@ -10,7 +10,7 @@ const PrmPresion = ({ biodigesterReadList }) => {
         className="mt-6"
         curveType="natural"
         data={biodigesterReadList}
-        categories={['presion']}
+        categories={['dtBPresion']}
         colors={['amber']}
         yAxisWidth={40}
       />

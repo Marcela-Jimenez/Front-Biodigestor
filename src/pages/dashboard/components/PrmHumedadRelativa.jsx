@@ -10,7 +10,7 @@ const PrmHumedadRelativa = ({ biodigesterReadList }) => {
         className="mt-6"
         curveType="natural"
         data={biodigesterReadList}
-        categories={['relativeHumidety']}
+        categories={['dtBHmdRelativa']}
         colors={['teal']}
         yAxisWidth={40}
       />

@@ -15,7 +15,7 @@ const PrmTemperaturas = ({ biodigesterReadList }) => {
         curveType="natural"
         data={biodigesterReadList}
         index="dateRead"
-        categories={['insideTemperature', 'outsideTemperature']}
+        categories={['dtBTmpInterna', 'dtBTmpExterna']}
         colors={['amber', 'teal']}
         valueFormatter={TemperaturaFormat}
       />

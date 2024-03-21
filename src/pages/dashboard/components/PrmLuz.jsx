@@ -1,6 +1,6 @@
 import { Title, Card, LineChart } from '@tremor/react';
 
-const PrmGas = ({ biodigesterReadList }) => {
+const PrmLuz = ({ biodigesterReadList }) => {
   return (
     <Card className="">
       <Title className="flex justify-between border-b-2 border-slate-200 py-4">
@@ -10,11 +10,11 @@ const PrmGas = ({ biodigesterReadList }) => {
         className="mt-6"
         curveType="natural"
         data={biodigesterReadList}
-        categories={['phBiol']}
+        categories={['dtBLight']}
         colors={['teal']}
         yAxisWidth={40}
       />
     </Card>
   );
 };
-export default PrmGas;
+export default PrmLuz;

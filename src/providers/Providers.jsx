@@ -5,9 +5,7 @@ export const SignalRContext = createSignalRContext();
 const Providers = ({ children }) => {
   //return children;
   return (
-    <SignalRContext.Provider
-      url={`http://localhost:5240/api/hubReadBiodigester`}
-    >
+    <SignalRContext.Provider url={`${urlApi}/hubReadBiodigester`}>
       {children}
     </SignalRContext.Provider>
   );
