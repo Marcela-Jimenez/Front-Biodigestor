@@ -12,7 +12,7 @@ import { SignalRContext } from '../../providers/providers';
 import PrmVoltaje from './components/PrmVoltaje';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { CreateCiclo, GetCiclo } from '../../services/api.service';
+import { CreateCiclo, GetCiclo, GetLecturas } from '../../services/api.service';
 import { GenerateReport } from '../../report/report';
 import { pdf } from '@react-pdf/renderer';
 
@@ -32,7 +32,7 @@ const Dashboard = () => {
     };
     const obtenerLecturasBiodigestor = async () => {
       try {
-        const result = await GetCiclo();
+        const result = await GetLecturas();
         setBiodigesterReadList(result);
       } catch (error) {
         console.log('error al obtener las lecturas');
