@@ -6,25 +6,29 @@ import {
   StyleSheet,
   View,
 } from '@react-pdf/renderer';
-import logo from '../assets/img/escudo_UDEC_Completo.webp';
+//import logo from '../assets/img/escudo_UDEC_Completo.webp';
 
 const styles = StyleSheet.create({
   page: {
     padding: '12px',
+    fontSize: '12px',
   },
   viewTitle: {
     alignItems: 'center',
+    fontSize: '36px',
+    fontWeight: 'bold',
     height: '48px',
     margin: 0,
     padding: 0,
   },
   title: {
-    color: '#06b6d4',
+    color: '#f59e0b',
+    fontSize: '24px',
     fontWeight: 'bold',
     marginTop: '8px',
     marginBottom: '8px',
     width: '100%',
-    borderBottom: '1px solid #06b6d4',
+    borderBottom: '1px solid #f59e0b',
   },
   text: {
     marginTop: '4px',
@@ -62,120 +66,45 @@ export const GenerateReport = ({ entity }) => {
     <Document>
       <Page style={styles.page}>
         <View style={styles.viewTitle}>
-          <Image src={logo} style={{ width: '56rem' }} />
-          <Text>{'TITLE'}</Text>
+          {/* <Image src={logo} style={{ width: '56rem' }} /> */}
+          <Text>{'Datos Biodigestor'}</Text>
         </View>
         <View style={styles.section}>
-          <Text style={styles.text}>{'INFORMATIONSEARCHED'}</Text>
           <Text style={styles.text}>
-            {'DATE'} {new Date().toLocaleDateString()}
-          </Text>
-          <Text style={styles.text}>
-            {'TEXTFIELD'} {entity?.searchedName}
-          </Text>
-          <Text style={styles.text}>
-            {'ACURACY'} {entity?.searchedPrecision}
+            {'Fecha Reporte: '} {new Date().toLocaleString()}
           </Text>
         </View>
+
         <View style={styles.section}>
-          <Text style={styles.title}>{'BASED'}</Text>
+          <Text style={styles.title}>{'Datos'}</Text>
           <View style={styles.table}>
             <View style={{ ...styles.tableRow, ...styles.header }}>
-              <Text style={styles.tableCell}>{'CODE'}</Text>
-              <Text style={styles.tableCell}>{'NAME'}</Text>
-              <Text style={styles.tableCell}>{'RECORDS'}</Text>
+              <Text style={styles.tableCell}>{'Fecha'}</Text>
+              <Text style={styles.tableCell}>{'Muestra'}</Text>
+              <Text style={styles.tableCell}>{'Temp_Int'}</Text>
+              <Text style={styles.tableCell}>{'Temp_Ext'}</Text>
+              <Text style={styles.tableCell}>{'Luz'}</Text>
+              <Text style={styles.tableCell}>{'Hum_Rel'}</Text>
+              <Text style={styles.tableCell}>{'Presion'}</Text>
+              <Text style={styles.tableCell}>{'Ph'}</Text>
             </View>
-            {/* {entity?.searchedLists.map((el, index) => (
-              <View
-                style={styles.tableRow}
-                key={`header-searchedList-${index}`}
-              >
-                <Text style={styles.tableCell}>{el.code}</Text>
-                <Text style={styles.tableCell}>{el.name}</Text>
-                <Text style={styles.tableCell}>{el.records}</Text>
+
+            {entity.map((el, index) => (
+              <View style={styles.tableRow} key={`row-${index}`}>
+                <Text style={styles.tableCell}>
+                  {new Date(el.dtBFchLectura).toLocaleTimeString()}
+                </Text>
+                <Text style={styles.tableCell}>{el.dtBMuestra}</Text>
+                <Text style={styles.tableCell}>{el.dtBTmpInterna}</Text>
+                <Text style={styles.tableCell}>{el.dtBTmpExterna}</Text>
+                <Text style={styles.tableCell}>{el.dtBLigth}</Text>
+                <Text style={styles.tableCell}>{el.dtBHmdRelativa}</Text>
+                <Text style={styles.tableCell}>{el.dtBPresion}</Text>
+                <Text style={styles.tableCell}>{el.dtBPh}</Text>
               </View>
-            ))} */}
+            ))}
           </View>
         </View>
-      </Page>
-      <Page style={styles.page}>
-        <View style={styles.section}>
-          <Text style={styles.viewTitle}>{'NONE'}</Text>
-          <Text style={styles.text}>{'MATCHES'}</Text>
-          {true && (
-            <View style={styles.section}>
-              <Text style={styles.title}>{'ALLOWLIST'}</Text>
-              <View style={styles.table}>
-                <View style={{ ...styles.tableRow, ...styles.header }}>
-                  <Text style={styles.tableCell}>{'CODE'}</Text>
-                  <Text style={styles.tableCell}>{'NAME'}</Text>
-                  <Text style={styles.tableCell}>{'RECORDS'}</Text>
-                </View>
-                {/* {entity?.foundLists.allowList.map((el, index) => (
-                  <View style={styles.tableRow} key={`allow-${index}`}>
-                    <Text style={styles.tableCell}>{el.code}</Text>
-                    <Text style={styles.tableCell}>{el.name}</Text>
-                    <Text style={styles.tableCell}>
-                      {el.listDetails.length}
-                    </Text>
-                  </View>
-                ))} */}
-              </View>
-            </View>
-          )}
-          {true && (
-            <View style={styles.section}>
-              <Text style={styles.title}>{'BLOCKLIST'}</Text>
-              <View style={styles.table}>
-                <View style={{ ...styles.tableRow, ...styles.header }}>
-                  <Text style={styles.tableCell}>{'CODE'}</Text>
-                  <Text style={styles.tableCell}>{'NAME'}</Text>
-                  <Text style={styles.tableCell}>{'RECORDS'}</Text>
-                </View>
-                {/* {entity?.foundLists.blockList.map((el, index) => (
-                  <View style={styles.tableRow} key={`block-${index}`}>
-                    <Text style={styles.tableCell}>{el.code}</Text>
-                    <Text style={styles.tableCell}>{el.name}</Text>
-                    <Text style={styles.tableCell}>
-                      {el.listDetails.length}
-                    </Text>
-                  </View>
-                ))} */}
-              </View>
-            </View>
-          )}
-          {true && (
-            <View style={styles.section}>
-              <Text style={styles.title}>{'SANCTIONLIST'}</Text>
-              <View style={styles.table}>
-                <View style={{ ...styles.tableRow, ...styles.header }}>
-                  <Text style={styles.tableCell}>{'CODE'}</Text>
-                  <Text style={styles.tableCell}>{'NAME'}</Text>
-                  <Text style={styles.tableCell}>{'RECORDS'}</Text>
-                </View>
-                {/* {entity?.foundLists.sanctionList.map((el, index) => (
-                  <View style={styles.tableRow} key={`sanction-${index}`}>
-                    <Text style={styles.tableCell}>{el.code}</Text>
-                    <Text style={styles.tableCell}>{el.name}</Text>
-                    <Text style={styles.tableCell}>
-                      {el.listDetails.length}
-                    </Text>
-                  </View>
-                ))} */}
-              </View>
-            </View>
-          )}
-        </View>
-      </Page>
-      <Page style={styles.page}>
-        <Text style={styles.title}>{'NOTICE'}</Text>
-        <Text style={styles.text}>{'1'}</Text>
-        <Text style={styles.text}>{'2'}</Text>
-        <Text style={styles.text}>{'3'}</Text>
-        <Text style={styles.text}>{'4'}</Text>
-        <Text style={styles.text}>{'5'}</Text>
-        <Text style={styles.text}>{'6'}</Text>
-        <Text style={styles.text}>{'7'}</Text>
       </Page>
     </Document>
   );

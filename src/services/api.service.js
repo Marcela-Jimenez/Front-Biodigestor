@@ -33,3 +33,13 @@ export const GetLecturas = async () => {
   if (result.status !== 200) throw new Error(result.statusText);
   return data;
 };
+
+export const GetLecturasSD = async () => {
+  const result = await fetch(`${API_URL}/DatosBiodigestor/SD`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  var data = await result.json();
+  if (result.status !== 200) throw new Error(result.statusText);
+  return data;
+};

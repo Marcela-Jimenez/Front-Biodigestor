@@ -12,14 +12,22 @@ import { SignalRContext } from '../../providers/providers';
 import PrmVoltaje from './components/PrmVoltaje';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { CreateCiclo, GetCiclo, GetLecturas } from '../../services/api.service';
+import {
+  CreateCiclo,
+  GetCiclo,
+  GetLecturas,
+  GetLecturasSD,
+} from '../../services/api.service';
 import { GenerateReport } from '../../report/report';
 import { pdf } from '@react-pdf/renderer';
 
 const Dashboard = () => {
   const [biodigesterRead, setBiodigesterRead] = useState();
+  const [isRL, setIsRL] = useState(false);
   const [biodigesterReadList, setBiodigesterReadList] = useState([]);
+  const [biodigesterReadSDList, setBiodigesterReadSDList] = useState([]);
   const [cicloActual, setCicloActual] = useState({});
+  const [loadingReport, setLoadingReport] = useState(false);
 
   useEffect(() => {
     const obtenerCicloActual = async () => {
@@ -38,25 +46,43 @@ const Dashboard = () => {
         console.log('error al obtener las lecturas');
       }
     };
+
+    const obtenerLecturasSD = async () => {
+      try {
+        const result = await GetLecturasSD();
+        setBiodigesterReadSDList(result);
+      } catch (error) {
+        console.log('error al obtener las lecturas de la SD');
+      }
+    };
+
     obtenerCicloActual();
     obtenerLecturasBiodigestor();
+    obtenerLecturasSD();
   }, []);
 
   const handleReporte = async () => {
-    const pdfLink = document.createElement('a');
-    document.body.appendChild(pdfLink);
-    pdf(<GenerateReport entity={{}} />)
-      .toBlob()
-      .then((blob) => {
-        const blobUrl = window.URL.createObjectURL(blob);
-        pdfLink.href = blobUrl;
-        pdfLink.download =
-          'certificate-' + new Date().getUTCMilliseconds() + '.pdf';
-        pdfLink.click();
-        setTimeout(() => {
-          window.URL.revokeObjectURL(blobUrl);
-          document.body.removeChild(pdfLink);
-        }, 0);
+    setLoadingReport(true);
+    GetLecturas()
+      .then((result) => {
+        const pdfLink = document.createElement('a');
+        document.body.appendChild(pdfLink);
+        pdf(<GenerateReport entity={result} />)
+          .toBlob()
+          .then((blob) => {
+            const blobUrl = window.URL.createObjectURL(blob);
+            pdfLink.href = blobUrl;
+            pdfLink.download =
+              'certificate-' + new Date().getUTCMilliseconds() + '.pdf';
+            pdfLink.click();
+            setTimeout(() => {
+              window.URL.revokeObjectURL(blobUrl);
+              document.body.removeChild(pdfLink);
+            }, 0);
+          });
+      })
+      .finally(() => {
+        setLoadingReport(false);
       });
   };
 
@@ -172,8 +198,13 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="self-center space-x-4">
-            <Button onClick={handleReporte} variant="secondary" color="blue">
-              Generar reporte
+            <Button
+              onClick={handleReporte}
+              variant="secondary"
+              color="blue"
+              disabled={loadingReport}
+            >
+              {loadingReport ? 'Generando...' : 'Generar reporte'}
             </Button>
             <Button
               onClick={handleIniciarNuevoCiclo}
@@ -186,19 +217,39 @@ const Dashboard = () => {
         </Card>
       </div>
       <div className="">
-        <PrmTemperaturas biodigesterReadList={biodigesterReadList} />
+        <PrmTemperaturas
+          biodigesterReadList={
+            isRL ? biodigesterReadList : biodigesterReadSDList
+          }
+        />
       </div>
       <div className="h-full">
-        <PrmVoltaje biodigesterReadList={biodigesterReadList} />
+        <PrmVoltaje
+          biodigesterReadList={
+            isRL ? biodigesterReadList : biodigesterReadSDList
+          }
+        />
       </div>
       <div className="">
-        <PrmHumedadRelativa biodigesterReadList={biodigesterReadList} />
+        <PrmHumedadRelativa
+          biodigesterReadList={
+            isRL ? biodigesterReadList : biodigesterReadSDList
+          }
+        />
       </div>
       <div className="">
-        <PrmPresion biodigesterReadList={biodigesterReadList} />
+        <PrmPresion
+          biodigesterReadList={
+            isRL ? biodigesterReadList : biodigesterReadSDList
+          }
+        />
       </div>
       <div className="">
-        <PrmPh biodigesterReadList={biodigesterReadList} />
+        <PrmPh
+          biodigesterReadList={
+            isRL ? biodigesterReadList : biodigesterReadSDList
+          }
+        />
       </div>
     </div>
   );
