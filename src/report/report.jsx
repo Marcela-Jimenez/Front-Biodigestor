@@ -1,11 +1,4 @@
-import {
-  Document,
-  Image,
-  Page,
-  Text,
-  StyleSheet,
-  View,
-} from '@react-pdf/renderer';
+import { Document, Page, Text, StyleSheet, View } from '@react-pdf/renderer';
 //import logo from '../assets/img/escudo_UDEC_Completo.webp';
 
 const styles = StyleSheet.create({

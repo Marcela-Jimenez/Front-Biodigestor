@@ -20,14 +20,15 @@ import {
 } from '../../services/api.service';
 import { GenerateReport } from '../../report/report';
 import { pdf } from '@react-pdf/renderer';
+import { Switch } from './components/Switch';
 
 const Dashboard = () => {
   const [biodigesterRead, setBiodigesterRead] = useState();
-  const [isRL, setIsRL] = useState(false);
+  const [isRL, setIsRL] = useState(true);
   const [biodigesterReadList, setBiodigesterReadList] = useState([]);
   const [biodigesterReadSDList, setBiodigesterReadSDList] = useState([]);
   const [cicloActual, setCicloActual] = useState({});
-  const [loadingReport, setLoadingReport] = useState(false);
+  const [loadingReport, setLoadingReport] = useState(true);
 
   useEffect(() => {
     const obtenerCicloActual = async () => {
@@ -165,6 +166,7 @@ const Dashboard = () => {
             )}
           </div>
           <div className="space-y-8">
+            <Switch active={isRL} setActive={setIsRL} />
             <Text className="text-center text-lg font-bold">
               Datos Recibidos
             </Text>
