@@ -15,25 +15,30 @@ import withReactContent from 'sweetalert2-react-content';
 import {
   CreateCiclo,
   GetCiclo,
+} from '../../services/procesoBiodigestor.service';
+import {
   GetLecturas,
   GetLecturasSD,
-} from '../../services/api.service';
+} from '../../services/datosBiodigestor.service';
+
 import { GenerateReport } from '../../report/report';
 import { pdf } from '@react-pdf/renderer';
 import { Switch } from './components/Switch';
+import { useParams } from 'react-router-dom';
 
-const Dashboard = () => {
+const DatosBiodigestor = () => {
+  const { id, name } = useParams();
   const [biodigesterRead, setBiodigesterRead] = useState();
   const [isRL, setIsRL] = useState(true);
   const [biodigesterReadList, setBiodigesterReadList] = useState([]);
   const [biodigesterReadSDList, setBiodigesterReadSDList] = useState([]);
   const [cicloActual, setCicloActual] = useState({});
-  const [loadingReport, setLoadingReport] = useState(true);
+  const [loadingReport, setLoadingReport] = useState(false);
 
   useEffect(() => {
     const obtenerCicloActual = async () => {
       try {
-        const result = await GetCiclo();
+        const result = await GetCiclo(id);
         setCicloActual(result);
       } catch (error) {
         console.log('error al obtener el ciclo actual');
@@ -41,7 +46,7 @@ const Dashboard = () => {
     };
     const obtenerLecturasBiodigestor = async () => {
       try {
-        const result = await GetLecturas();
+        const result = await GetLecturas(id);
         setBiodigesterReadList(result);
       } catch (error) {
         console.log('error al obtener las lecturas');
@@ -50,7 +55,7 @@ const Dashboard = () => {
 
     const obtenerLecturasSD = async () => {
       try {
-        const result = await GetLecturasSD();
+        const result = await GetLecturasSD(id);
         setBiodigesterReadSDList(result);
       } catch (error) {
         console.log('error al obtener las lecturas de la SD');
@@ -64,7 +69,7 @@ const Dashboard = () => {
 
   const handleReporte = async () => {
     setLoadingReport(true);
-    GetLecturas()
+    GetLecturas(id)
       .then((result) => {
         const pdfLink = document.createElement('a');
         document.body.appendChild(pdfLink);
@@ -102,7 +107,7 @@ const Dashboard = () => {
       cancelButtonText: 'Cancelar',
       preConfirm: async (fecha) => {
         try {
-          const response = await CreateCiclo(fecha ? fecha : undefined);
+          const response = await CreateCiclo(id, fecha ? fecha : null);
           setCicloActual(response);
           return response;
         } catch (error) {
@@ -122,16 +127,18 @@ const Dashboard = () => {
   };
 
   SignalRContext.useSignalREffect('getReads', (result) => {
-    setBiodigesterRead(result);
-    const limitReads = 15;
-    if (biodigesterReadList.length >= limitReads) {
-      const lastReadsBiodigesterReads = biodigesterReadList.slice(
-        biodigesterReadList.length - limitReads + 1,
-        biodigesterReadList.length
-      );
-      setBiodigesterReadList([...lastReadsBiodigesterReads, result]);
-    } else {
-      setBiodigesterReadList([...biodigesterReadList, result]);
+    if (result.dtBgrId === cicloActual.prBId) {
+      setBiodigesterRead(result);
+      const limitReads = 15;
+      if (biodigesterReadList.length >= limitReads) {
+        const lastReadsBiodigesterReads = biodigesterReadList.slice(
+          biodigesterReadList.length - limitReads + 1,
+          biodigesterReadList.length
+        );
+        setBiodigesterReadList([...lastReadsBiodigesterReads, result]);
+      } else {
+        setBiodigesterReadList([...biodigesterReadList, result]);
+      }
     }
   });
   return (
@@ -139,7 +146,7 @@ const Dashboard = () => {
       <div>
         <Card className="h-full flex flex-col justify-between space-y-8 md:space-y-0">
           <div className="space-y-1">
-            <Title className="text-xl">Biodigestor Lestoma v2.0</Title>
+            <Title className="text-xl">Biodigestor {name}</Title>
             {biodigesterRead?.dateRead && (
               <Text>
                 Fecha y Hora última lectura:{' '}
@@ -256,4 +263,4 @@ const Dashboard = () => {
     </div>
   );
 };
-export default Dashboard;
+export default DatosBiodigestor;

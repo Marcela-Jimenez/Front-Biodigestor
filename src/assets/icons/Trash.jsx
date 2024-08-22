@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-const Trash = ({ classCustom }) => {
+const Trash = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      className={classCustom}
+      className={className}
     >
       <path
         fillRule="evenodd"

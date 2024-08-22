@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import DashboardLayout from './Layout/dashboard/DashboardLayout';
-import Dashboard from './pages/dashboard/Dashboard';
+import DatosBiodigestor from './pages/dashboard/DatosBiodigestor';
+import Biodigestor from './pages/dashboard/Biodigestor';
 import Usuarios from './pages/usuarios/Usuarios';
 import Login from './pages/login/Login';
 import Actividades from './pages/actividades/Actividades';
@@ -13,8 +14,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Dashboard />,
+        element: <Biodigestor />,
       },
+      { path: '/:name/:id', element: <DatosBiodigestor /> },
       { path: 'usuarios', element: <Usuarios /> },
       { path: 'actividades', element: <Actividades /> },
     ],
